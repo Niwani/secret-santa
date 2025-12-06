@@ -1,0 +1,12 @@
+specVersion: "v1"
+serviceId: "secret-santa"
+location: "us-central1"
+schema:
+  source: "./schema"
+  datasource:
+    postgresql:
+      database: "fdcdb"
+      cloudSql:
+        instanceId: "secret-santa-fdc"
+      # schemaValidation: "COMPATIBLE"
+connectorDirs: ["./connector"]
