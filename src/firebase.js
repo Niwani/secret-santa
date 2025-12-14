@@ -1,6 +1,8 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getDatabase } from "firebase/database";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 // Your Firebase configuration
 const firebaseConfig = {
@@ -16,7 +18,15 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+// Analytics (safe for production)
 const analytics = getAnalytics(app);
 
-// ✅ Export the REALTIME DATABASE
+// ✅ Realtime Database (your existing app)
 export const database = getDatabase(app);
+
+// ✅ NEW: Firebase Auth
+export const auth = getAuth(app);
+
+// ✅ NEW: Firestore (for users, events, billing)
+export const db = getFirestore(app);

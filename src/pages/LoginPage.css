@@ -1,0 +1,139 @@
+/* FULL PAGE BACKGROUND */
+.login-page {
+    min-height: 100vh;
+    background-image: url("/secretsanta.png");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+    position: relative;
+  }
+
+  .back-home {
+    position: absolute;
+    top: 25px;
+    left: 30px;
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: 500;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 8px 14px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    z-index: 10;
+  }
+  
+  .back-home:hover {
+    background: rgba(0, 0, 0, 0.6);
+    transform: translateX(-3px);
+  }
+  
+  /* OVERLAY FOR BETTER READABILITY */
+  .login-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  /* LOGIN FORM CONTAINER */
+  .login-container {
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+  }
+  
+  .login-container h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #e53935;
+  }
+  
+  .login-container p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 30px;
+  }
+  
+  /* INPUT FIELDS */
+  .login-container input {
+    width: 90%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.3s;
+  }
+  
+  .login-container input:focus {
+    border-color: #e53935;
+  }
+  
+  .rememberMe {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    font-size: 14px;
+  }
+  
+  .rememberMe input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+  
+  /* LOGIN BUTTON */
+  .btn-login {
+    width: 50%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #e53935;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+  }
+  
+  .btn-login:hover {
+    background: #c62828;
+    transform: translateY(-2px);
+  }
+  
+  /* FOOTER LINKS */
+  .login-footer {
+    margin-top: 20px;
+    font-size: 13px;
+    color: #555;
+  }
+  
+  .login-footer a {
+    color: #e53935;
+    text-decoration: none;
+  }
+  
+  .login-footer a:hover {
+    text-decoration: underline;
+  }
+  
+  /* RESPONSIVE */
+  @media (max-width: 480px) {
+    .login-container {
+      padding: 30px 20px;
+    }
+  }
+  

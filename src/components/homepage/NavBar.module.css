@@ -1,0 +1,132 @@
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  padding: 0 25px;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.logo a {
+  font-size: 22px;
+  font-weight: bold;
+  color: #e65100;
+  text-decoration: none;
+}
+
+/* Desktop Links */
+.linksDesktop {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.link {
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.link:hover {
+  background-color: #e65100;
+  color: white;
+}
+
+/* CTA Button */
+.ctaButton {
+  padding: 10px 18px;
+  background: #e65100;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.ctaButton:hover {
+  background: #ff7043;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.bar {
+  height: 3px;
+  background-color: #333;
+  border-radius: 2px;
+}
+
+/* Mobile Overlay */
+.mobileOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Mobile Menu */
+.mobileMenu {
+  width: 80%;
+  max-width: 300px;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20px;
+  gap: 20px;
+  box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+  animation: slideIn 0.3s ease forwards;
+  overflow-y: auto;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.mobileLink {
+  color: #333;
+  font-size: 18px;
+  text-decoration: none;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.mobileCta {
+  margin-top: 20px;
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .linksDesktop {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}

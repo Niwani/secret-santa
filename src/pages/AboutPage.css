@@ -1,0 +1,85 @@
+.about-wrapper {
+    font-family: sans-serif;
+    padding-top: 40px;
+  }
+  
+  /* HERO SECTION */
+  .about-hero {
+    text-align: center;
+    padding: 90px 20px;
+    max-width: 900px;
+    margin: auto;
+  }
+  
+  .about-hero h1 {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  
+  .about-hero p {
+    font-size: 18px;
+    color: #555;
+    max-width: 700px;
+    margin: auto;
+    line-height: 1.6;
+  }
+  
+  /* MAIN CONTENT */
+  .about-content {
+    max-width: 900px;
+    margin: 0px auto;
+    padding: 0 20px;
+  }
+  
+  .about-content h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  .about-content p {
+    color: #444;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+  
+  /* VALUES SECTION */
+  .about-values {
+    margin-top: 60px;
+    padding: 40px 20px;
+    background: #fafafa;
+  }
+  
+  .about-values h2 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .values-grid {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+  }
+  
+  .value-card {
+    background: #fff;
+    width: 260px;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.07);
+    transition: 0.3s ease;
+  }
+  
+  .value-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+  }
+  
+  .value-card h3 {
+    margin-bottom: 10px;
+    color: #e53935;
+  }
+  

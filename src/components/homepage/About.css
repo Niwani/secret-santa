@@ -1,0 +1,85 @@
+/* About Section */
+.aboutSection {
+    position: relative;
+    width: 90%;
+    min-height: 45vh;
+    background-image: url('/gifts.jpg'), url('/gifts.jpg');
+    background-position: left center, right center;
+    background-repeat: no-repeat, no-repeat;
+    background-size: 50% 100%, 50% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+    margin: 60px auto 0;
+    
+  }
+  
+  /* Dark overlay to make text readable */
+  .aboutOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+  }
+  
+ 
+  /* Text Content */
+  .aboutContent {
+    position: relative;
+    max-width: 700px;
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+    padding: 20px;
+  }
+  
+  .aboutTitle {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .aboutText {
+    font-size: 18px;
+    line-height: 1.7;
+    font-weight: 300;
+    color: #f1f1f1;
+    margin-bottom: 30px;
+  }
+  
+  /* Button */
+  .aboutButton {
+    padding: 14px 28px;
+    background: #e65100;
+    color: white;
+    border: none;
+    font-size: 17px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .aboutButton:hover {
+    background: #c44200;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .aboutTitle {
+      font-size: 28px;
+    }
+  
+    .aboutText {
+      font-size: 16px;
+    }
+  
+    .aboutButton {
+      font-size: 15px;
+      padding: 12px 20px;
+    }
+  }
+  

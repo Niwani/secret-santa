@@ -1,0 +1,93 @@
+.blog-page {
+    font-family: sans-serif;
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 5%;
+  }
+  
+  /* HERO SECTION */
+  .blog-hero {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  
+  .blog-hero h1 {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+  
+  .blog-hero p {
+    font-size: 18px;
+    color: #555;
+  }
+  
+  /* ARTICLES GRID */
+  .blog-articles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+  }
+  
+  /* INDIVIDUAL ARTICLE CARD */
+  .blog-card {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    padding: 25px;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .blog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  }
+  
+  .blog-card h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #e53935; /* Christmas red accent */
+  }
+  
+  .blog-excerpt {
+    color: #555;
+    line-height: 1.6;
+    flex-grow: 1;
+  }
+  
+  .blog-meta {
+    font-size: 13px;
+    color: #888;
+    margin: 15px 0;
+  }
+  
+  /* READ MORE BUTTON */
+  .read-more-btn {
+    padding: 10px 16px;
+    background: #e53935;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .read-more-btn:hover {
+    background: #c62828;
+    transform: translateY(-2px);
+  }
+  
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .blog-articles {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  

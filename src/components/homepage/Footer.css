@@ -1,0 +1,79 @@
+.footer {
+    background: #111;
+    color: #ddd;
+    padding: 40px 20px 20px;
+    margin: 0px auto 0;
+    font-family: sans-serif;
+    width: 90%;
+  }
+  
+  .footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .footer-section {
+    flex: 1;
+    min-width: 220px;
+  }
+  
+  .footer-section h3,
+  .footer-section h4 {
+    color: #fff;
+    margin-bottom: 15px;
+  }
+  
+  .footer-section p {
+    margin: 5px 0;
+    line-height: 1.6;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 8px;
+  }
+  
+  .footer-section a {
+    color: #ddd;
+    text-decoration: none;
+    transition: 0.3s ease;
+  }
+  
+  .footer-section a:hover {
+    color: #f00; /* Christmas red touch */
+  }
+  
+  .socials a {
+    display: inline-block;
+    margin-right: 12px;
+    padding: 6px 10px;
+    background: #222;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #ddd;
+    font-size: 14px;
+    transition: 0.3s;
+  }
+  
+  .socials a:hover {
+    background: #f00;
+    color: #fff;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #333;
+    font-size: 14px;
+    color: #aaa;
+  }
+  
