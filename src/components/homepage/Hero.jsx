@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { Sparkles } from "lucide-react";
 import classes from "./Hero.module.css";
 
 export default function Hero() {
@@ -8,23 +9,36 @@ export default function Hero() {
   return (
     <section className={classes.hero}>
       <div className={classes.heroImageWrapper}>
-        <img src="/tinybox.jpg" className={classes.heroImage} />
+        <img src="/pinky.jpg" className={classes.heroImage} />
 
         <div className={classes.heroContent}>
+          <div className={classes.sparkles}>
+            <Sparkles />
+            Trusted by thousands worldwide
+          </div>
           <h1 className={classes.heroTitle}>
-            Organize a Secret Santa Event <br />
-            in minutes
+            Gifting Made <span className={classes.simple}>Simple </span>
           </h1>
           <p className={classes.heroSubtitle}>
-            Works great for families, friends, or company teams. <br />
-            — no stress, just fun.
+            No more paper slips. No more mix-ups. Organize perfect gift exchanges for 
+            <br />
+            families, friends, schools, and companies with zero hassle.
           </p>
-          <button
-            className={classes.heroButton}
-            onClick={() => navigate("/admin/create-event")}
-          >
-            Start an Event →
-          </button>
+          <div className={classes.buttons}>
+            <button
+              className={classes.heroButton}
+              onClick={() => navigate("/login")}
+            >
+              Create Free Event →
+            </button>
+            <button
+              className={classes.demoButton}
+              onClick={() => navigate("/demo")}
+            >
+              Try Demo
+            </button>
+          </div>
+          
         </div>
       </div>
     </section>

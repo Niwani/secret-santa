@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import NavBar from "../components/homepage/NavBar.jsx";
 import Hero from "../components/homepage/Hero.jsx";
 import Features from "../components/homepage/Features.jsx";
-import Blog from "../components/homepage/Blog.jsx";
-import About from "../components/homepage/About.jsx";
+import Pricing from "../components/homepage/Pricing.jsx";
 import Footer from "../components/homepage/Footer.jsx";
+import HowItWorks from "../components/homepage/HIW.jsx";
 
 export default function HomePage() {
   
@@ -15,9 +15,9 @@ export default function HomePage() {
     <div className="wrapper">
       <NavBar />
       <Hero />
+      <HowItWorks />
       <Features />
-      <Blog />
-      <About />
+      <Pricing />
       <Footer />
     </div>
   );

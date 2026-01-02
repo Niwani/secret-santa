@@ -4,7 +4,7 @@ import { ref, get, set } from "firebase/database";
 import { useParams } from "react-router-dom";
 
 export default function SecretSantaApp() {
-  const { eventId } = useParams();
+  const { creatorId, eventId } = useParams();
   const [eventName, setEventName] = useState("");
   const [participants, setParticipants] = useState([]);
   const [nameInput, setNameInput] = useState("");
@@ -14,7 +14,8 @@ export default function SecretSantaApp() {
   // Fetch event details
   useEffect(() => {
     const fetchEvent = async () => {
-      const eventSnap = await get(ref(database, `secretSanta/events/${eventId}`));
+      // Fetch from the user's specific path
+      const eventSnap = await get(ref(database, `secretSanta/users/${creatorId}/events/${eventId}`));
       if (eventSnap.exists()) {
         const eventData = eventSnap.val();
         setEventName(eventData.name);
@@ -22,23 +23,33 @@ export default function SecretSantaApp() {
       }
     };
     fetchEvent();
-  }, [eventId]);
+  }, [creatorId, eventId]);
 
   const handleAssign = async () => {
-    const userName = nameInput.trim();
-    if (!userName) {
+    const userNameInput = nameInput.trim();
+    if (!userNameInput) {
       alert("Please enter your name.");
       return;
     }
-    if (!participants.includes(userName)) {
+
+    // Find exact match case-insensitively
+    const matchedName = participants.find(
+        p => p.trim().toLowerCase() === userNameInput.toLowerCase()
+    );
+
+    if (!matchedName) {
       alert("Your name is not in the participant list for this event!");
       return;
     }
 
+    // Use the correctly cased name from the list
+    const userName = matchedName;
+
     setLoading(true);
 
-    const assignedRef = ref(database, `secretSanta/${eventId}/assignedNames/${userName}`);
-    const takenRef = ref(database, `secretSanta/${eventId}/takenRecipients`);
+    // Update paths to include users/${creatorId}
+    const assignedRef = ref(database, `secretSanta/users/${creatorId}/events/${eventId}/assignedNames/${userName}`);
+    const takenRef = ref(database, `secretSanta/users/${creatorId}/events/${eventId}/takenRecipients`);
 
     const assignedSnap = await get(assignedRef);
 
@@ -66,17 +77,17 @@ export default function SecretSantaApp() {
     const randomRecipient = available[Math.floor(Math.random() * available.length)];
 
     // Save to Firebase
-    await set(ref(database, `secretSanta/${eventId}/assignedNames/${userName}`), randomRecipient);
-    await set(ref(database, `secretSanta/${eventId}/takenRecipients/${randomRecipient}`), true);
+    await set(ref(database, `secretSanta/users/${creatorId}/events/${eventId}/assignedNames/${userName}`), randomRecipient);
+    await set(ref(database, `secretSanta/users/${creatorId}/events/${eventId}/takenRecipients/${randomRecipient}`), true);
 
-    setResult(`Your Secret Santa is: ${randomRecipient}`);
+    setResult(`Your Gift Match is: ${randomRecipient}`);
     setLoading(false);
   };
 
   return (
     <div
       style={{
-        backgroundImage: "url('/boxes.jpg')",
+        background: "linear-gradient(135deg, #fce4ec, #f8bbd0)", // Soft Pink Gradient
         backgroundSize: "cover",
         backgroundPosition: "center",
         minHeight: "100vh",
@@ -102,7 +113,7 @@ export default function SecretSantaApp() {
         }}
       >
         <h1 style={{ marginTop: 0, marginBottom: 20, fontWeight: "bold" }}>
-          🎅 {eventName || "Secret Santa Draw"} 🎁
+          💘 {eventName || "GiftEx Draw"} 🎁
         </h1>
 
         <input
@@ -128,7 +139,7 @@ export default function SecretSantaApp() {
             padding: "12px 0",
             width: "100%",
             borderRadius: "8px",
-            background: "#d32f2f",
+            background: "#e91e63", // Valentine Pink
             color: "white",
             border: "none",
             fontSize: "16px",
@@ -136,7 +147,7 @@ export default function SecretSantaApp() {
             marginBottom: "15px"
           }}
         >
-          {loading ? "Assigning..." : "Get Secret Santa"}
+          {loading ? "Matching..." : "Find Your Match"}
         </button>
 
         <h2
@@ -148,7 +159,7 @@ export default function SecretSantaApp() {
             wordBreak: "break-word"
           }}
         >
-          {result}
+          {result ? result.replace("Secret Santa", "Gift Match") : ""}
         </h2>
       </div>
     </div>

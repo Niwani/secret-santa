@@ -1,0 +1,30 @@
+.content {
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+  
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .updated {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+  }
+  
+  section {
+    margin-bottom: 1.5rem;
+  }
+  
+  h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  a {
+    color: #b30000;
+    text-decoration: none;
+  }
+  

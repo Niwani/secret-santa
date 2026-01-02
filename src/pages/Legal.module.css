@@ -1,0 +1,100 @@
+/* Container */
+.container {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #333;
+  line-height: 1.6;
+  position: relative;
+  /* For relative positioning of buttons if needed */
+}
+
+/* Headings */
+.container h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #e91e63;
+  /* Pink branding */
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.container h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #c2185b;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #fce4ec;
+  padding-bottom: 8px;
+}
+
+/* Sections */
+.container section {
+  margin-bottom: 20px;
+}
+
+.container p {
+  margin-bottom: 15px;
+  color: #444;
+}
+
+.updated {
+  text-align: center;
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 40px;
+}
+
+/* Back Buttons */
+.topBack {
+  margin-bottom: 20px;
+}
+
+.bottomBack {
+  margin-top: 40px;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.backLink {
+  color: #e91e63;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+  color: #c2185b;
+}
+
+/* Links inside text */
+.container a {
+  color: #e91e63;
+  text-decoration: none;
+}
+
+.container a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .container h1 {
+    font-size: 2rem;
+  }
+}

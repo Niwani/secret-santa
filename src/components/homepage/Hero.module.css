@@ -1,36 +1,47 @@
 .hero {
-  margin-top: 80px;
+  margin-top: 60px;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 0 20px;
 }
 
 .heroImageWrapper {
   position: relative;
   width: 100%;
-  max-width: 1900px;
+  max-width: 2000px;
 }
 
 .heroImage {
   width: 100%;
-  height: 80vh;
+  height: 50vh;
   object-fit: cover;
-  border-radius: 12px;
   display: block;
 }
 
 .heroContent {
   position: absolute;
   top: 50%;
-  left: 5%; /* keeps it inside the image */
-  transform: translateY(-50%); /* vertically center only */
-  text-align: left;
-  padding: 25px 35px;
+  left: 30%; 
+  transform: translateY(-50%); 
+  text-align: center;
   border-radius: 10px;
-  color: white;
+  color: black;
   max-width: 50%;
-  /* no background on desktop */
+}
+
+.sparkles {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem; 
+  background-color: #fee2e2;
+  color: #b91c1c;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem; 
+}
+
+.simple {
+  color: #b91c1c;
 }
 
 
@@ -45,9 +56,13 @@
   margin-bottom: 35px;
 }
 
+.buttons {
+  gap: 2px;
+}
+
 .heroButton {
   padding: 18px 28px;
-  background: #e65100;
+  background: #e22121;
   color: white;
   border: none;
   border-radius: 6px;
@@ -57,7 +72,23 @@
 }
 
 .heroButton:hover {
-  background: #ff5722;
+  background: #b91c1c
+}
+
+.demoButton {
+  padding: 18px 28px;
+  background: white;
+  color: black;
+  border-color: rgb(116, 122, 122);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  margin-left: 20px;
+}
+
+.demoButton:hover {
+  background-color: azure;
 }
 
 /* Mobile responsive */

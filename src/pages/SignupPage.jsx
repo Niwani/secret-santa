@@ -4,10 +4,18 @@ import { auth, db } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 
+import Modal from "../components/Modal";
+import TermsContent from "../components/TermsContent";
+import PrivacyPolicyModal from "../components/PrivacyPolicyModal";
+
 import "./SignupPage.css";
 
 export default function SignupPage() {
   const navigate = useNavigate();
+
+  const [showTerms, setShowTerms] = useState(false);
+  const [showPrivacy, setShowPrivacy] = useState(false)
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -20,36 +28,34 @@ export default function SignupPage() {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [name]: type === "checkbox" ? checked : value,
-    });
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     if (formData.password !== formData.confirmPassword) {
       alert("Passwords do not match");
       return;
     }
-  
+
     if (!formData.agree) {
       alert("Please agree to the terms and privacy policy");
       return;
     }
-  
+
     try {
-      // 🔐 1. Create user in Firebase Auth
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         formData.email,
         formData.password
       );
-  
+
       const user = userCredential.user;
-  
-      // 📄 2. Save user profile in Firestore
+
       await setDoc(doc(db, "users", user.uid), {
         fullName: formData.fullName,
         email: formData.email,
@@ -57,17 +63,16 @@ export default function SignupPage() {
         organization: formData.organization || "",
         role: "creator",
         createdAt: serverTimestamp(),
+        plan: "free",
+        subscriptionExpiresAt: null,
       });
-  
-      // 🚀 3. Redirect to Create Event page
-      navigate("/admin/create-event");
-  
+
+      navigate("/dashboard");
     } catch (error) {
       console.error("Signup error:", error);
       alert(error.message);
     }
   };
-  
 
   return (
     <div className="signup-page">
@@ -101,6 +106,7 @@ export default function SignupPage() {
               name="groupType"
               value={formData.groupType}
               onChange={handleChange}
+              required
             >
               <option value="">How will you use this platform?</option>
               <option value="family">Family</option>
@@ -134,6 +140,7 @@ export default function SignupPage() {
               required
             />
 
+            {/* ✅ TERMS SECTION */}
             <div className="terms">
               <label className="checkbox">
                 <input
@@ -143,14 +150,36 @@ export default function SignupPage() {
                   onChange={handleChange}
                   className="box"
                 />
-                <p>I agree to the <Link to="/terms">Terms</Link> and{" "}
-                <Link to="/privacy">Privacy Policy</Link></p>
+
+                <span>
+                  I agree to the{" "}
+                  <span
+                    className="legal-link"
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => setShowTerms(true)}
+                    onKeyDown={(e) => e.key === "Enter" && setShowTerms(true)}
+                  >
+                    Terms & Conditions
+                  </span>{" "}
+                  and{" "}
+                  <span
+                    style={{ color: "#007bff", cursor: "pointer" }}
+                    onClick={() => setShowPrivacy(true)}
+                  >
+                    Privacy Policy
+                  </span>
+                </span>
               </label>
             </div>
-            
 
-            <button type="submit" className="btn-signup">
-              Create Accoun & Event
+
+            <button
+              type="submit"
+              className="btn-signup"
+              disabled={!formData.agree}
+            >
+              Create Account & Event
             </button>
           </form>
 
@@ -159,6 +188,16 @@ export default function SignupPage() {
           </div>
         </div>
       </div>
+
+      {/* ✅ MODAL OVERLAY */}
+      <Modal isOpen={showTerms} onClose={() => setShowTerms(false)}>
+        <TermsContent />
+      </Modal>
+      {showPrivacy && (
+        <PrivacyPolicyModal
+          onClose={() => setShowPrivacy(false)}
+        />
+      )}
     </div>
   );
 }

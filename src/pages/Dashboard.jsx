@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Crown, Sparkles, AlertCircle, MailWarningIcon } from "lucide-react";
 import Navbar from "../components/loggedIn/NavBar";
 import { auth, database, db } from "../firebase";
 import { ref, push, set, onValue, remove } from "firebase/database";
 import { doc, setDoc, getDoc } from "firebase/firestore";
+import MyEvents from "../components/loggedIn/MyEvents";
+import PricingModal from "../components/loggedIn/PricingModal";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -12,7 +15,8 @@ export default function Dashboard() {
   const [participants, setParticipants] = useState([""]);
   const [loading, setLoading] = useState(false);
   const [events, setEvents] = useState([]);
-  const [editingEvent, setEditingEvent] = useState(null)
+  const [editingEvent, setEditingEvent] = useState(null);
+  const [showPricing, setShowPricing] = useState(false);
 
   // Fetch user name
   useEffect(() => {
@@ -41,7 +45,7 @@ export default function Dashboard() {
   }, []);
 
   const handleAddParticipant = () => {
-    if (participants.length < 30) setParticipants([...participants, ""]);
+    if (participants.length < 20) setParticipants([...participants, ""]);
   };
 
   const handleParticipantChange = (index, value) => {
@@ -55,26 +59,25 @@ export default function Dashboard() {
     setLoading(true);
 
     try {
-      const newEventRef = push(ref(database, "secretSanta/events"));
+      // Write only to user's specific node
+      const newEventRef = push(ref(database, `secretSanta/users/${auth.currentUser.uid}/events`));
+      
       await set(newEventRef, {
         name: eventName,
         participants: participants.filter((p) => p.trim() !== ""),
         creatorId: auth.currentUser.uid,
         createdAt: new Date().toISOString(),
-        drawn: false, // tracks if draw has been done
+        drawn: false, 
       });
 
-      await setDoc(doc(db, "events", newEventRef.key), {
-        name: eventName,
-        participants: participants.filter((p) => p.trim() !== ""),
-        creatorId: auth.currentUser.uid,
-        createdAt: new Date(),
-        drawn: false,
-      });
+      // Removed global writes to avoid permission issues
 
       setEventName("");
       setParticipants([""]);
-      navigate(`/event/${newEventRef.key}/draw`);
+      
+      alert("Event created successfully! Check 'My Events' below.");
+      // Auto-navigation disabled per user request
+      // navigate(`/event/${auth.currentUser.uid}/${newEventRef.key}/draw`);
     } catch (err) {
       console.error(err);
       alert(err.message);
@@ -109,8 +112,8 @@ export default function Dashboard() {
         .map((name) => name.trim())
         .filter((name) => name !== "");
   
-      // Combine with existing participants and limit to 30
-      const combined = [...participants, ...names].slice(0, 30);
+      // Combine with existing participants and limit to 20
+      const combined = [...participants, ...names].slice(0, 20);
       setParticipants(combined);
     };
     reader.readAsText(file);
@@ -125,7 +128,22 @@ export default function Dashboard() {
       <div style={{ maxWidth: 1200, margin: "40px auto", padding: "0 20px" }}>
         {/* Create Event Card */}
         <div style={styles.card}>
-            <h2>Create New Event</h2>
+            <div style={styles.cardHeaderRow}>
+              <h2>Create New Event</h2>
+              <button 
+                style={styles.upgradeBtn}
+                onClick={() => setShowPricing(true)}
+              >
+                <Crown size={16} />
+                Upgrade Plan
+              </button>
+            </div>
+            
+            <div style={styles.limitNote}>
+              <AlertCircle size={16} color="#854d0e" />
+              <span>Free Plan: Limited to 20 participants per event.</span>
+            </div>
+
             <input
                 style={styles.input}
                 type="text"
@@ -163,7 +181,7 @@ export default function Dashboard() {
             <button style={styles.createBtn} onClick={handleCreateEvent} disabled={loading}>
               {loading ? "Creating..." : "Create Event"}
             </button>
-            <div style={{ marginBottom: 10 }}>
+            <div style={styles.uploadBtn}>
                 <label style={{ fontWeight: 600 }}>Upload Participants File:</label>
                 <input
                     type="file"
@@ -201,49 +219,8 @@ export default function Dashboard() {
         )}
 
         {/* Events Grid */}
-        <h2 style={{ marginTop: 40, marginBottom: 20 }}>All Events</h2>
-        <div style={styles.grid}>
-        {events.map((ev) => {
-            const isEditable = !ev.drawn; // only editable if draw hasn't happened
-            return (
-            <div key={ev.id} style={styles.eventCard}>
-                <h3 style={{ fontSize: 16 }}>{ev.name}</h3>
-                <p style={{ fontSize: 14 }}>Participants: {ev.participants.length}</p>
-                <p style={{ fontSize: 14 }}>Creator: {ev.creatorId}</p>
-                <p style={{ fontSize: 12 }}> 
-                  Drawn: {ev.drawnParticipants || 0} / {ev.participants.length}
-                </p>
-
-                <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
-                <button
-                    style={{ ...styles.drawBtn, background: "#43a047" }}
-                    onClick={() => navigate(`/event/${ev.id}/draw`)}
-                >
-                    Go to Draw
-                </button>
-                <button
-                    style={{
-                        ...styles.drawBtn,
-                        background: isEditable ? "#1e88e5" : "#aaa",
-                        cursor: isEditable ? "pointer" : "not-allowed",
-                    }}
-                    onClick={() => {
-                        if (isEditable) setEditingEvent(ev); // open modal
-                    }}
-                    >
-                    Edit
-                </button>
-
-                <button
-                    style={{ ...styles.drawBtn, background: "#e53935" }}
-                    onClick={() => handleDelete(ev.id)}
-                >
-                    Delete
-                </button>
-                </div>
-            </div>
-            );
-        })}
+        <div>
+        <MyEvents />
         </div>
       </div>
       {/* Edit Event Modal */}
@@ -330,6 +307,7 @@ export default function Dashboard() {
         </div>
       )}
 
+      {showPricing && <PricingModal onClose={() => setShowPricing(false)} />}
     </div>
   );
 }
@@ -350,22 +328,35 @@ const styles = {
       fontSize: 16,
     },
     addBtn: {
-      padding: "10px 20px",
+      padding: "8px 16px",
       background: "#f9a825",
+      height:"40px", // Keeping the color scheme
       border: "none",
       borderRadius: 8,
       color: "#fff",
       cursor: "pointer",
       fontWeight: 600,
+      fontSize: 13,
+      transition: "all 0.2s ease",
+      boxShadow: "0 2px 4px rgba(249, 168, 37, 0.2)",
+      marginTop: 30,
     },
     createBtn: {
-      padding: "10px 20px",
+      padding: "8px 16px",
+      height: "40px",
       background: "#e53935",
       border: "none",
       borderRadius: 8,
       color: "#fff",
       cursor: "pointer",
       fontWeight: 600,
+      fontSize: 13,
+      transition: "all 0.2s ease",
+      boxShadow: "0 2px 4px rgba(229, 57, 53, 0.3)",
+      marginTop: 30,
+    },
+    uploadBtn: {
+      marginTop: 10,
     },
 
     removeBtn: {
@@ -378,6 +369,41 @@ const styles = {
         fontWeight: 600,
         fontSize: 14,
       },
+
+    cardHeaderRow: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      marginBottom: 15,
+    },
+    upgradeBtn: {
+      display: "flex",
+      alignItems: "center",
+      gap: 6,
+      padding: "8px 16px",
+      background: "linear-gradient(135deg, #6366f1 0%, #a855f7 100%)",
+      color: "white",
+      border: "none",
+      borderRadius: 20,
+      cursor: "pointer",
+      fontWeight: 600,
+      fontSize: 14,
+      boxShadow: "0 4px 12px rgba(124, 58, 237, 0.3)",
+      transition: "transform 0.2s",
+    },
+    limitNote: {
+      display: "flex",
+      alignItems: "center",
+      gap: 8,
+      padding: "10px 14px",
+      background: "#fef9c3",
+      border: "1px solid #fde047",
+      borderRadius: 8,
+      marginBottom: 20,
+      color: "#854d0e",
+      fontSize: 14,
+      fontWeight: 500,
+    },
       
     grid: {
       display: "grid",

@@ -9,44 +9,44 @@ export default function BlogPage() {
   const articles = [
     {
       id: 1,
-      title: "5 Creative Secret Santa Ideas",
-      excerpt: "Discover fun ways to make your Secret Santa exchange memorable this year...",
-      date: "Dec 1, 2025",
+      title: "Top 10 Romantic GiftEx Ideas for Valentine's 2026",
+      excerpt: "Make this Valentine's unforgettable with these trending romantic gift exchange ideas...",
+      date: "Feb 1, 2026",
       author: "Jane Doe"
     },
     {
       id: 2,
-      title: "Top 10 Gift Exchange Mistakes to Avoid",
-      excerpt: "Avoid the common pitfalls when organizing a gift exchange among friends, family, or colleagues...",
-      date: "Nov 25, 2025",
-      author: "John Smith"
-    },
-    {
-      id: 3,
-      title: "How to Make Remote Secret Santa Fun",
-      excerpt: "Tips and tools to run a virtual Secret Santa for teams working from home...",
-      date: "Nov 20, 2025",
+      title: "How to Host a Galentine's Gift Exchange in 2026",
+      excerpt: "Celebrate female friendship with a fun and fabulous Galentine's GiftEx party!",
+      date: "Jan 28, 2026",
       author: "Emily Brown"
     },
     {
+      id: 3,
+      title: "Budget-Friendly Valentine's Gifts for Your Office Crush",
+      excerpt: "Cute and affordable gift ideas that say 'I like you' without breaking the bank.",
+      date: "Jan 25, 2026",
+      author: "John Smith"
+    },
+    {
         id: 4,
-        title: "10 Unique Secret Santa Gift Ideas",
-        excerpt: "Discover fun, affordable, and creative gifts that everyone will love during your Secret Santa exchange.",
-        date: "Nov 20, 2025",
+        title: "5 Unique Valentine's Themes for Couples",
+        excerpt: "Spice up your relationship with these creative gift exchange themes for couples.",
+        date: "Jan 20, 2026",
         author: "Emily Brown"
       },
       {
         id: 5,
-        title: "ow to Host the Perfect Secret Santa Event",
-        excerpt: "Learn how to organise a stress-free and exciting gift exchange for family, friends, or coworkers.",
-        date: "Nov 20, 2025",
-        author: "Emily Brown"
+        title: "The Ultimate Guide to Valentine's GiftEx 2026",
+        excerpt: "Everything you need to know to organize the perfect Valentine's gift exchange event.",
+        date: "Jan 15, 2026",
+        author: "Jane Doe"
       },
       {
         id: 6,
-        title: "Fun Themes for Christmas Gift Exchanges",
-        excerpt: "Make your event more exciting with creative themes such as “funny gifts”, “DIY only”, or “₦3000 max.”",
-        date: "Nov 20, 2025",
+        title: "DIY Valentine's Gifts That Look Expensive",
+        excerpt: "Handmade gifts that show you care. Perfect for a thoughtful GiftEx exchange.",
+        date: "Jan 10, 2026",
         author: "Emily Brown"
       },
 

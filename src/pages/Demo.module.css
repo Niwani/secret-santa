@@ -1,0 +1,123 @@
+.pageWrapper {
+    min-height: 100vh;
+    /* bg-gradient-to-b from-green-50 via-white to-red-50 */
+    background: linear-gradient(to bottom, #f0fdf4, #ffffff, #fef2f2);
+    padding: 48px 0;
+  }
+  
+  .container {
+    max-width: 896px; /* max-w-4xl */
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  
+  /* Sparkles Badge */
+  .demoBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #dcfce7;
+    color: #15803d;
+    padding: 8px 16px;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+  
+  /* Grid Layout */
+  .grid {
+    display: grid;
+    gap: 24px;
+  }
+  
+  @media (min-width: 768px) {
+    .grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  /* Card Styles */
+  .card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cardHeader {
+    padding: 24px 24px 16px;
+    border-bottom: 1px solid #f3f4f6;
+  }
+  
+  .cardTitle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .cardContent {
+    padding: 24px;
+  }
+  
+  /* Participant List Area */
+  .participantList {
+    margin-top: 16px;
+    max-height: 256px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .participantItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    background-color: #f9fafb;
+    border-radius: 8px;
+  }
+  
+  /* The Secret Reveal Card */
+  .revealCard {
+    margin-top: 24px;
+    background: linear-gradient(to right, #fef2f2, #f0fdf4);
+    border: 2px solid #fecaca;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    animation: popIn 0.3s ease-out;
+  }
+  
+  @keyframes popIn {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  
+  .revealName {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #dc2626;
+    margin: 8px 0;
+  }
+  
+  /* Alert Styling */
+  .demoAlert {
+    background-color: #fffbeb;
+    border: 1px solid #fde68a;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }

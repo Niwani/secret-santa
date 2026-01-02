@@ -1,0 +1,68 @@
+.section {
+    padding: 80px 24px; /* py-20 px-6 */
+    margin-top: -100px;
+    background-color: #f4edf2;
+  }
+  
+  .title {
+    font-size: 30px; /* text-3xl */
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 48px; /* mb-12 */
+    color: #1a1a1a;
+  }
+  
+  .grid {
+    display: grid;
+    gap: 32px; /* gap-8 */
+  }
+  
+  /* Responsive Grid: 1 column on mobile, 3 on medium screens */
+  @media (min-width: 768px) {
+    .grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  
+  .card {
+    border: 2px solid #eaeaea; /* border-2 */
+    border-radius: 12px;
+    background: #fff;
+    transition: box-shadow 0.3s ease; /* transition-shadow */
+  }
+  
+  .card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); /* hover:shadow-lg */
+  }
+  
+  .cardContent {
+    padding: 24px; /* p-6 */
+    text-align: center;
+  }
+  
+  /* Icon Containers */
+  .iconWrapper {
+    width: 64px; /* w-16 */
+    height: 64px; /* h-16 */
+    border-radius: 50%; /* rounded-full */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px; /* mx-auto mb-4 */
+  }
+  
+  /* Specific Colors */
+  .redIcon { background-color: #fee2e2; color: #dc2626; }
+  .greenIcon { background-color: #dcfce7; color: #16a34a; }
+  .blueIcon { background-color: #dbeafe; color: #2563eb; }
+  
+  .cardTitle {
+    font-size: 20px; /* text-xl */
+    font-weight: 600;
+    margin-bottom: 8px; /* mb-2 */
+  }
+  
+  .cardText {
+    color: #4b5563; /* text-gray-600 */
+    line-height: 1.5;
+  }

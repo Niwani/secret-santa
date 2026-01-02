@@ -1,7 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./About.css";
 
 export default function About() {
+    const navigate = useNavigate()
     return (
         <section className="aboutSection">
             {/* <div className="aboutOverlay">
@@ -21,7 +23,7 @@ export default function About() {
                 team-building events, and any celebration where gifts are involved.
                 </p>
 
-                <button className="aboutButton" onClick={() => navigate("/admin/create-event")}>
+                <button className="aboutButton" onClick={() => navigate("/login")}>
                 Start an Event →
                 </button>
             </div>

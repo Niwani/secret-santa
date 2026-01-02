@@ -1,0 +1,488 @@
+.page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fff0f5, #ffebee);
+  /* Valentine Pink */
+  padding: 40px 20px;
+}
+
+.header {
+  max-width: 1100px;
+  margin: 0 auto 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.header h1 {
+  font-size: 2.2rem;
+  color: #c2185b;
+  /* Dark Pink/Red */
+}
+
+.header p {
+  color: #880e4f;
+  font-size: 1rem;
+}
+
+.createBtn {
+  align-self: flex-start;
+  background: #e91e63;
+  /* Pink */
+  color: #fff;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.createBtn:hover {
+  background: #c2185b;
+}
+
+/* ... */
+
+.loader {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #fce4ec;
+  border-top: 4px solid #e91e63;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* ... */
+
+.goToDrawBtn {
+  background: #e91e63;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.1s, background 0.2s;
+}
+
+.goToDrawBtn:hover {
+  background: #c2185b;
+  transform: translateY(-1px);
+}
+
+/* GRID */
+.grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* CARD */
+.card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+  /* Softer shadow */
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 180px;
+  border: 1px solid transparent;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+  border-color: rgba(230, 81, 0, 0.1);
+}
+
+.cardHeader h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.cardMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.cardFooter {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  color: #e65100;
+  font-weight: 600;
+  font-size: 0.95rem;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.2s ease;
+}
+
+.card:hover .cardFooter {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* EMPTY STATE */
+.emptyState {
+  max-width: 500px;
+  margin: 60px auto;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 60px 40px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+}
+
+.emptyIcon {
+  display: inline-flex;
+  padding: 20px;
+  background: #fdf2f8;
+  /* lush subtle pink/orange bg */
+  border-radius: 50%;
+  color: #e65100;
+  margin-bottom: 24px;
+  margin: 0 auto 20px;
+}
+
+.emptyState h2 {
+  color: #1f2937;
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+
+.emptyState p {
+  color: #6b7280;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* LOADING */
+.center {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.loader {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #eee;
+  border-top: 4px solid #e65100;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .header h1 {
+    font-size: 1.7rem;
+  }
+
+  .createBtn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* MODAL */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeIn 0.15s ease-out;
+}
+
+.modalContent {
+  background: #fff;
+  padding: 32px;
+  border-radius: 24px;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  max-height: 90vh;
+}
+
+.modalHeaderRow {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+.closeBtn,
+.editBtn {
+  background: #f3f4f6;
+  border: none;
+  cursor: pointer;
+  color: #4b5563;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeBtn:hover,
+.editBtn:hover {
+  background: #e5e7eb;
+  color: #111827;
+  transform: scale(1.05);
+}
+
+.modalTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 4px;
+  padding-right: 80px;
+  /* space for buttons */
+}
+
+.modalSubtitle {
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+.participantList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+  max-height: 300px;
+  overflow-y: auto;
+  background: #f9fafb;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  padding: 8px;
+}
+
+.participantItem {
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 4px;
+  color: #374151;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: background 0.2s;
+}
+
+.participantItem:hover {
+  background: #f3f4f6;
+}
+
+.participantItem:last-child {
+  margin-bottom: 0;
+}
+
+/* EDITING STYLES */
+.editingItem {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  align-items: center;
+}
+
+.editInput {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+
+.editInput:focus {
+  border-color: #6366f1;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.removeBtn {
+  background: #fee2e2;
+  color: #ef4444;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.removeBtn:hover {
+  background: #fecaca;
+}
+
+.listAddBtn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  background: white;
+  border: 1px dashed #d1d5db;
+  border-radius: 12px;
+  color: #6b7280;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.listAddBtn:hover {
+  background: #f9fafb;
+  border-color: #9ca3af;
+  color: #374151;
+}
+
+.modalFooter {
+  margin-top: auto;
+}
+
+.actionButtons,
+.editActions {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.goToDrawBtn,
+.saveBtn {
+  background: #e65100;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex: 1;
+  transition: transform 0.1s, background 0.2s;
+  box-shadow: 0 4px 6px -1px rgba(230, 81, 0, 0.2);
+}
+
+.saveBtn {
+  background: #10b981;
+  /* Green for save */
+  box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2);
+}
+
+.goToDrawBtn:hover {
+  background: #c2410c;
+  transform: translateY(-1px);
+}
+
+.saveBtn:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
+
+.shareBtn,
+.cancelBtn {
+  background: #f3f4f6;
+  color: #374151;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.cancelBtn {
+  flex: 1;
+}
+
+.shareBtn:hover,
+.cancelBtn:hover {
+  background: #e5e7eb;
+  transform: translateY(-1px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

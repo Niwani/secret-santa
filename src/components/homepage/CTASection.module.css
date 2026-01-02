@@ -1,0 +1,49 @@
+.ctaSection {
+    /* bg-gradient-to-r from-red-600 to-red-700 */
+    background: linear-gradient(to right, #dc2626, #b91c1c);
+    color: #ffffff;
+    padding: 80px 0; /* py-20 */
+  }
+  
+  .container {
+    max-width: 896px; /* max-w-4xl */
+    margin: 0 auto;
+    padding: 0 24px; /* px-6 */
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 36px; /* text-4xl */
+    font-weight: 700;
+    margin-bottom: 16px; /* mb-4 */
+    line-height: 1.2;
+  }
+  
+  .subtitle {
+    font-size: 20px; /* text-xl */
+    margin-bottom: 32px; /* mb-8 */
+    color: #fee2e2; /* text-red-100 */
+  }
+  
+  /* Button Styling */
+  .ctaButton {
+    background-color: #ffffff;
+    color: #dc2626; /* text-red-600 */
+    font-size: 18px; /* text-lg */
+    font-weight: 600;
+    padding: 24px 32px; /* py-6 px-8 */
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s active;
+    display: inline-block;
+    text-decoration: none;
+  }
+  
+  .ctaButton:hover {
+    background-color: #f3f4f6; /* hover:bg-gray-100 */
+  }
+  
+  .ctaButton:active {
+    transform: scale(0.98);
+  }

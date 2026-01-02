@@ -1,0 +1,43 @@
+.button {
+    padding: 0.6rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  /* Primary button - festive red */
+  .primary {
+    background: linear-gradient(90deg, #d62828, #f77f00);
+    color: white;
+    box-shadow: 0 4px 15px rgba(247, 127, 0, 0.3);
+  }
+  
+  .primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(247, 127, 0, 0.4);
+  }
+  
+  /* Secondary button - gold */
+  .secondary {
+    background: linear-gradient(90deg, #fcbf49, #f77f00);
+    color: #1a1a1a;
+    box-shadow: 0 4px 15px rgba(252, 191, 73, 0.3);
+  }
+  
+  .secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(252, 191, 73, 0.4);
+  }
+  

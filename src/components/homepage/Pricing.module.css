@@ -1,0 +1,133 @@
+.sectionWrapper {
+  width: 100%;
+  background-color: rgb(241, 245, 248); /* Your light blue-gray */
+  margin-top: -3%;
+  display: flex;
+  justify-content: center; /* This replaces justify-self */
+}
+
+/* 2. The Content: This handles the width and centering of your text/cards */
+.sectionContent {
+  max-width: 1152px; /* Your 6xl constraint */
+  width: 100%;      /* Necessary so it can shrink on mobile */
+  padding: 80px 24px; /* Your vertical and horizontal breathing room */
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 48px; /* mb-12 */
+}
+
+.title {
+  font-size: 30px; /* text-3xl */
+  font-weight: 700;
+  margin-bottom: 16px; /* mb-4 */
+}
+
+.subtitle {
+  color: #4b5563; /* text-gray-600 */
+}
+
+.grid {
+  display: grid;
+  gap: 24px; /* gap-6 */
+}
+.button {
+  padding: 18px 28px;
+  background: white;
+  color: black;
+  border-color: rgb(116, 122, 122);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  margin-left: 20px;
+}
+
+.button:hover {
+  background-color: #eaeaea;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.card {
+  position: relative;
+  background: #fff;
+  border: 2px solid #eaeaea; /* border-2 */
+  border-radius: 12px;
+  padding: 24px; /* p-6 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Popular Plan Styling */
+.popularCard {
+  border-color: #ef4444; /* border-red-500 */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); /* shadow-lg */
+}
+
+.popularBadge {
+  position: absolute;
+  top: -12px; /* -top-3 */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #dc2626; /* bg-red-600 */
+  color: white;
+  padding: 4px 16px; /* py-1 px-4 */
+  border-radius: 9999px; /* rounded-full */
+  font-size: 14px; /* text-sm */
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.planName {
+  font-weight: 600;
+  font-size: 18px; /* text-lg */
+  margin-bottom: 8px; /* mb-2 */
+}
+
+.priceContainer {
+  margin-bottom: 4px; /* mb-1 */
+}
+
+.priceValue {
+  font-size: 30px; /* text-3xl */
+  font-weight: 700;
+}
+
+.planDesc {
+  color: #4b5563; /* text-gray-600 */
+  font-size: 14px; /* text-sm */
+  margin-bottom: 16px; /* mb-4 */
+}
+
+.featureList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0; /* mb-6 */
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* gap-2 */
+  font-size: 14px; /* text-sm */
+  margin-bottom: 8px; /* space-y-2 */
+}
+
+.featureDot {
+  width: 6px; /* w-1.5 */
+  height: 6px; /* h-1.5 */
+  background-color: #22c55e; /* bg-green-500 */
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 32px; /* mt-8 */
+}

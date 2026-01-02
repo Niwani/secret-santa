@@ -1,73 +1,60 @@
-import React from "react";
-import "./Pricing.css";
-import NavBar from "./NavBar";
-import Footer from "./Footer";
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import styles from './Pricing.module.css';
+
+const PLANS = [
+  { name: 'Free', price: '₦0', desc: 'Perfect for small groups', features: ['Up to 20 participants', 'Basic matching', 'Email notifications'] },
+  { name: 'Per Event', price: '₦3,000', desc: 'One-time pro features', features: ['Unlimited participants', 'Custom branding', 'Priority support'], popular: false },
+  { name: 'Pro', price: '₦15,000', desc: 'Per year', features: ['Unlimited events', 'All pro features', 'Analytics dashboard'], popular: true },
+  { name: 'Business', price: '₦25,000', desc: 'Per year', features: ['Everything in Pro', 'API access', 'Dedicated support'], popular: false }
+];
 
 export default function Pricing() {
+  const navigate = useNavigate();
+
   return (
-    <div>
-      <NavBar />
-      <div  className="pricing-page">
-        <h1 className="pricing-title">Simple, Transparent Pricing</h1>
-        <p className="pricing-subtitle">Choose a plan that fits your event size</p>
+    <section className={styles.sectionWrapper}>
+      <div className={styles.sectionContent}>
+        <div className={styles.header}>
+          <h2 className={styles.title}>Simple Pricing</h2>
+          <p className={styles.subtitle}>Choose the plan that works for you</p>
+        </div>
 
-        <div className="pricing-grid">
+        <div className={styles.grid}>
+          {PLANS.map((plan, i) => (
+            <div 
+              key={i} 
+              className={`${styles.card} ${plan.popular ? styles.popularCard : ''}`}
+            >
+              {plan.popular && (
+                <div className={styles.popularBadge}>Popular</div>
+              )}
+              
+              <h3 className={styles.planName}>{plan.name}</h3>
+              <div className={styles.priceContainer}>
+                <span className={styles.priceValue}>{plan.price}</span>
+              </div>
+              <p className={styles.planDesc}>{plan.desc}</p>
+              
+              <ul className={styles.featureList}>
+                {plan.features.map((feature, j) => (
+                  <li key={j} className={styles.featureItem}>
+                    <div className={styles.featureDot} />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
 
-          {/* FREE PLAN */}
-          <div className="price-card">
-            <h3>Free</h3>
-            <p className="price">$0</p>
-            <p className="price-desc">Perfect for small groups and families</p>
-
-            <ul className="price-features">
-              <li>Up to 10 participants</li>
-              <li>Random assignment</li>
-              <li>Email notifications</li>
-              <li>Basic support</li>
-            </ul>
-
-            <button className="price-btn">Get Started</button>
-          </div>
-
-          {/* PRO PLAN (Popular) */}
-          <div className="price-card popular">
-            <div className="popular-badge">Most Popular</div>
-
-            <h3>Pro</h3>
-            <p className="price">$9.99</p>
-            <p className="price-desc">Great for offices, churches, and events</p>
-
-            <ul className="price-features">
-              <li>Up to 100 participants</li>
-              <li>Custom event themes</li>
-              <li>Automated email reminders</li>
-              <li>Priority support</li>
-            </ul>
-
-            <button className="price-btn primary">Upgrade Now</button>
-          </div>
-
-          {/* BUSINESS PLAN */}
-          <div className="price-card">
-            <h3>Business</h3>
-            <p className="price">$29.99</p>
-            <p className="price-desc">Ideal for large companies & organizations</p>
-
-            <ul className="price-features">
-              <li>Unlimited participants</li>
-              <li>Advanced reporting</li>
-              <li>Multiple event managers</li>
-              <li>Dedicated support</li>
-            </ul>
-
-            <button className="price-btn">Contact Sales</button>
-          </div>
-
+        <div className={styles.footer}>
+          <button className={styles.button} onClick={() => (navigate("/pricing"))}>
+            View Full Pricing
+          </button>
         </div>
       </div>
-      <div className="foot">
-        <Footer />
-      </div>
-    </div>
+      
+    </section>
   );
 }

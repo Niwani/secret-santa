@@ -1,5 +1,7 @@
 import React from "react";
 import "./Footer.css";
+import { Link } from "react-router-dom";
+import { Gift } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -7,24 +9,32 @@ export default function Footer() {
       <div className="footer-container">
 
         <div className="footer-section">
-          <h3>Secret Santa</h3>
-          <p>Create and manage gift exchange events with ease.</p>
+          <div className="footer-logo">
+            <Gift size={30} color="#e91e63" strokeWidth={2.5} style={{ marginTop: 2, display: "block" }} />
+            <h3>GiftEx</h3>
+          </div>
+          <p>Making gift-giving joyful agiain for 
+          families, friends, and companies worldwide.</p>
         </div>
 
         <div className="footer-section">
-          <h4>Quick Links</h4>
+          <h4>Products</h4>
           <ul>
-            <li><a href="/blog">Blog</a></li>
             <li><a href="/pricing">Pricing</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/create-event">Create Event</a></li>
-            <li><a href="/login">Login</a></li>
+            <li><a href="/demo">Demo</a></li>
+          </ul>
+        </div>
+        <div className="footer-section">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="/pricing">Blog</a></li>
+            <li><Link to="/terms">Terms & Condition</Link></li>
           </ul>
         </div>
 
         <div className="footer-section">
           <h4>Contact</h4>
-          <p>Email: support@secretsanta.com</p>
+          <p>Email: support@giftex.com</p>
           <p>Phone: +234 813 000 0000</p>
         </div>
 
@@ -40,7 +50,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        © {new Date().getFullYear()} Secret Santa — All Rights Reserved.
+        © {new Date().getFullYear()} GiftEx — All Rights Reserved.
       </div>
     </footer>
   );

@@ -67,6 +67,15 @@
     display: flex;
   }
 
+  .legal-link {
+    color: #007bff;
+    cursor: pointer;
+  }
+  
+  .legal-link:hover {
+    opacity: 0.85;
+  }
+
   .checkbox {
     display: flex;
     gap: 13px;

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { Gift } from "lucide-react";
 import classes from "./NavBar.module.css";
 
 export default function NavBar() {
@@ -11,19 +12,23 @@ export default function NavBar() {
   return (
     <>
       <nav className={classes.navbar}>
-        <div className={classes.logo}>
-          <Link to="/">Secret Santa</Link>
+        <div className={classes.logoGroup}>
+          <Gift size={30} color="#e91e63" strokeWidth={2.5} style={{ marginTop: 2, display: "block" }} />
+          <div className={classes.logo}>
+            <Link to="/">GiftEx</Link>
+          </div>
         </div>
+        
 
         {/* Desktop Links */}
         <div className={classes.linksDesktop}>
-          <Link to="/blog" className={classes.link}>Blog</Link>
+          <Link to="/" className={classes.link}>Home</Link>
           <Link to="/pricing" className={classes.link}>Pricing</Link>
-          <Link to="/about" className={classes.link}>About</Link>
-          <Link to="/login" className={classes.link}>Log in</Link>
+          <Link to="/blog" className={classes.link}>blog</Link>
+          <Link to="/login" className={classes.link}>Create Event</Link>
           <button
             className={classes.ctaButton}
-            onClick={() => navigate("/admin/create-event")}
+            onClick={() => navigate("/demo")}
           >
             Try Demo
           </button>
@@ -36,6 +41,9 @@ export default function NavBar() {
           <div className={classes.bar}></div>
         </div>
       </nav>
+
+      
+
 
       {/* Mobile Menu Overlay */}
       {open && (

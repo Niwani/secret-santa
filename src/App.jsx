@@ -10,6 +10,11 @@ import BlogPage from "./pages/BlogPage";
 import BlogPostPage from "./pages/BlogPostPage";
 import SignupPage from "./pages/SignupPage";
 import Dashboard from "./pages/Dashboard";
+import DemoDraw from "./pages/DemoDraw";
+import ForgotPassword from "./pages/ForgotPassword";
+import Terms from "./pages/Terms.jsx";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage.jsx";
+import Demo from "./pages/DemoPage.jsx";
 
 export default function App() {
   return (
@@ -25,13 +30,18 @@ export default function App() {
 
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/admin/create-event" element={<AdminCreateEvent />} />
+        <Route path="/demo" element={<Demo />} />
+        <Route path="/demo/draw" element={<DemoDraw />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
 
-        <Route path="/event/:eventId" element={<EventPage />} />
+        <Route path="/event/:creatorId/:eventId" element={<EventPage />} />
 
 
-        <Route path="/event/:eventId/draw" element={<SecretSantaApp />} />
+        <Route path="/event/:creatorId/:eventId/draw" element={<SecretSantaApp />} />
         
       </Routes>
     </BrowserRouter>
