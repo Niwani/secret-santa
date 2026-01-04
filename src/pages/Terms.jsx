@@ -15,7 +15,7 @@ export default function Terms() {
 
       <section>
         <p>
-          Welcome to <strong>GiftEx</strong>. By accessing or using this
+          Welcome to <strong>Gifterly</strong>. By accessing or using this
           application, you agree to be bound by these Terms and Conditions. If
           you do not agree to these terms, please do not use the service.
         </p>
@@ -51,7 +51,7 @@ export default function Terms() {
       <section>
         <h2>4. Events and Gift Exchanges</h2>
         <p>
-          GiftEx provides tools to help users organize and manage gift
+          Gifterly provides tools to help users organize and manage gift
           exchange events. We do not guarantee gift quality, gift delivery, or
           participant behavior. All exchanges are conducted at users’ own
           discretion and risk.
@@ -71,7 +71,7 @@ export default function Terms() {
         <h2>6. Intellectual Property</h2>
         <p>
           All content, features, branding, and functionality within the
-          application are the exclusive property of GiftEx. You may not
+          application are the exclusive property of Gifterly. You may not
           copy, modify, distribute, or resell any part of the service without
           written permission.
         </p>
@@ -89,7 +89,7 @@ export default function Terms() {
       <section>
         <h2>8. Limitation of Liability</h2>
         <p>
-          To the maximum extent permitted by law, GiftEx shall not be
+          To the maximum extent permitted by law, Gifterly shall not be
           liable for any indirect, incidental, or consequential damages
           resulting from your use of the service, including disputes between
           users.

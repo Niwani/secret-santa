@@ -18,7 +18,7 @@ export default function PricingModal({ onClose }) {
 
         <div style={styles.priceTag}>
             <span style={styles.currency}>₦</span>
-            <span style={styles.amount}>5,000</span>
+            <span style={styles.amount}>3,000</span>
             <span style={styles.period}>/ event</span>
         </div>
 
@@ -37,15 +37,18 @@ export default function PricingModal({ onClose }) {
             </li>
              <li style={styles.featureItem}>
                 <div style={styles.iconBox}><Check size={16} strokeWidth={3} /></div>
-                <span>Priority Support</span>
+                <span>Priority Email & Chat Support</span>
             </li>
         </ul>
 
-        <button style={styles.payBtn} onClick={() => alert("Paystack Integration coming soon!")}>
+        <button 
+            style={styles.payBtn} 
+            onClick={() => window.open("https://project-x-merchant.k8.isw.la/paymentgateway/link/pay/SantaExDlIA7", "_blank")}
+        >
             Pay Now
         </button>
         
-        <p style={styles.secureText}>🔒 Secured by Paystack</p>
+        <p style={styles.secureText}>🔒 Secured by Quickteller</p>
 
         <div style={{ marginTop: "24px", paddingTop: "16px", borderTop: "1px solid #f3f4f6" }}>
             <p style={{ color: "#6b7280", fontSize: "0.9rem", marginBottom: "8px" }}>Not what you're looking for?</p>

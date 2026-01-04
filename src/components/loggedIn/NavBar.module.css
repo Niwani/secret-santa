@@ -1,0 +1,245 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 40px;
+    background: rgba(255, 255, 255, 0.85);
+    /* Light glass */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+}
+
+.logoGroup {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.logoText {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #db2777 0%, #be185d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+}
+
+.navSection {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.navLink {
+    text-decoration: none;
+    color: #4b5563;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+    position: relative;
+}
+
+.navLink:hover {
+    color: #db2777;
+}
+
+.navLink::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #db2777;
+    transition: width 0.3s;
+}
+
+.navLink:hover::after {
+    width: 100%;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.iconBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    color: #6b7280;
+    transition: 0.2s;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconBtn:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: #1f2937;
+}
+
+.badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 8px;
+    height: 8px;
+    background: #ef4444;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.profileWrapper {
+    position: relative;
+}
+
+.profileBtn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    padding: 6px 16px 6px 6px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.profileBtn:hover {
+    border-color: #db2777;
+    box-shadow: 0 2px 8px rgba(219, 39, 119, 0.1);
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #fbcfe8 0%, #f9a8d4 100%);
+    color: #be185d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.userName {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #374151;
+    max-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Dropdown */
+.dropdown {
+    position: absolute;
+    top: 120%;
+    right: 0;
+    width: 200px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 1px solid #f3f4f6;
+    padding: 5px;
+    animation: slideDown 0.2s ease-out;
+    transform-origin: top right;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.dropdownItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    color: #4b5563;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.1s;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.dropdownItem:hover {
+    background: #fdf2f8;
+    color: #db2777;
+}
+
+.divider {
+    height: 1px;
+    background: #f3f4f6;
+    margin: 4px 0;
+}
+
+/* Mobile */
+.mobileMenuBtn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #374151;
+}
+
+.mobileOverlay {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 999;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+    .navSection,
+    .actions {
+        display: none;
+    }
+
+    .mobileMenuBtn {
+        display: block;
+    }
+
+    .navbar {
+        padding: 15px 20px;
+    }
+}

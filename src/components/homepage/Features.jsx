@@ -13,7 +13,7 @@ export default function Features() {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <h2 className={styles.title}>Why GiftEx?</h2>
+        <h2 className={styles.title}>Why Gifterly?</h2>
         
         <div className={styles.grid}>
           {FEATURES.map((item, i) => (

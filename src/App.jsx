@@ -8,10 +8,14 @@ import AboutPage from "./pages/AboutPage";
 import PricingPage from "./pages/PricingPage";
 import BlogPage from "./pages/BlogPage";
 import BlogPostPage from "./pages/BlogPostPage";
+import HelpCenterPage from "./pages/HelpCenterPage";
+import ResourcesPage from "./pages/ResourcesPage";
 import SignupPage from "./pages/SignupPage";
 import Dashboard from "./pages/Dashboard";
+import ProfilePage from "./pages/ProfilePage";
 import DemoDraw from "./pages/DemoDraw";
 import ForgotPassword from "./pages/ForgotPassword";
+import AdminSupportPage from "./pages/AdminSupportPage";
 import Terms from "./pages/Terms.jsx";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage.jsx";
 import Demo from "./pages/DemoPage.jsx";
@@ -27,12 +31,16 @@ export default function App() {
         <Route path="/pricing" element={<PricingPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:id" element={<BlogPostPage />} />
+        <Route path="/help" element={<HelpCenterPage />} />
+        <Route path="/resources" element={<ResourcesPage />} />
 
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/admin/create-event" element={<AdminCreateEvent />} />
+        <Route path="/admin/support" element={<AdminSupportPage />} />
         <Route path="/demo" element={<Demo />} />
         <Route path="/demo/draw" element={<DemoDraw />} />
         <Route path="/terms" element={<Terms />} />

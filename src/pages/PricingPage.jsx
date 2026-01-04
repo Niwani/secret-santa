@@ -1,11 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Check, Sparkles } from 'lucide-react';
+import { getAuth } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 import styles from './PricingPage.module.css';
-import NavBar from '../components/homepage/NavBar';
+import PublicNavBar from '../components/homepage/NavBar';
 import Footer from '../components/homepage/Footer';
 
 export default function Pricing() {
+    const [user, setUser] = useState(null);
+    const [displayName, setDisplayName] = useState("");
+
+    useEffect(() => {
+        const auth = getAuth();
+        const unsubscribe = auth.onAuthStateChanged(async (currentUser) => {
+            setUser(currentUser);
+            if (currentUser) {
+                // Try to get fullName from firestore for consistency, fallback to displayName
+                try {
+                    const docRef = doc(db, "users", currentUser.uid);
+                    const docSnap = await getDoc(docRef);
+                    if (docSnap.exists() && docSnap.data().fullName) {
+                        setDisplayName(docSnap.data().fullName);
+                    } else {
+                        setDisplayName(currentUser.displayName);
+                    }
+                } catch (e) {
+                    setDisplayName(currentUser.displayName);
+                }
+            }
+        });
+        return () => unsubscribe();
+    }, []);
+
     const plans = [
         {
           name: 'Free',
@@ -24,8 +52,9 @@ export default function Pricing() {
             'No custom branding',
             'Standard support'
           ],
-          buttonText: 'Start Free',
-          buttonVariant: 'outline'
+          buttonText: user ? 'Go to Dashboard' : 'Start Free',
+          buttonVariant: 'outline',
+          link: '/dashboard'
         },
         {
           name: 'Pay Per Event',
@@ -44,7 +73,8 @@ export default function Pricing() {
           ],
           popular: false,
           buttonText: 'Buy for One Event',
-          buttonVariant: 'default'
+          buttonVariant: 'default',
+          link: 'https://project-x-merchant.k8.isw.la/paymentgateway/link/pay/SantaExDlIA7'
         },
         {
           name: 'Pro',
@@ -64,7 +94,8 @@ export default function Pricing() {
           ],
           popular: true,
           buttonText: 'Get Pro',
-          buttonVariant: 'default'
+          buttonVariant: 'default',
+          link: 'https://project-x-merchant.k8.isw.la/paymentgateway/link/pay/SantaExcDR5q'
         },
         {
           name: 'Business',
@@ -83,15 +114,17 @@ export default function Pricing() {
             '99.9% uptime SLA',
             'Phone support'
           ],
-          buttonText: 'Contact Sales',
-          buttonVariant: 'default'
+          buttonText: 'Coming Soon',
+          buttonVariant: 'outline',
+          link: null, // Disabled
+          disabled: true
         }
       ];
     
 
   return (
     <div>
-        <NavBar />
+        <PublicNavBar />
         <div className={styles.pageWrapper}>
         <div className={styles.container}>
             
@@ -122,10 +155,6 @@ export default function Pricing() {
                     <p style={{ color: '#6b7280', fontSize: '0.875rem' }}>{plan.period}</p>
                 </div>
                 
-                <button className={`plan.popular ? ${styles.btnRedFull} : ${styles.btnOutlineFull}`}>
-                    {plan.buttonText}
-                </button>
-
                 <div className={styles.featureList}>
                     {plan.features.map((feature, i) => (
                     <div key={i} className={styles.featureItem}>
@@ -134,16 +163,44 @@ export default function Pricing() {
                     </div>
                     ))}
                 </div>
+
+                {plan.disabled ? (
+                     <button className={styles.btnDisabledFull} disabled>
+                        {plan.buttonText}
+                     </button>
+                ) : plan.link ? (
+                    plan.link.startsWith('http') ? (
+                        <a 
+                            href={plan.link} 
+                            target="_blank" 
+                            rel="noreferrer"
+                            className={plan.popular ? styles.btnPrimaryFull : styles.btnOutlineFull}
+                            style={{ display: 'block', textAlign: 'center', textDecoration: 'none' }}
+                        >
+                            {plan.buttonText}
+                        </a>
+                    ) : (
+                         <Link to={plan.link} className={plan.popular ? styles.btnPrimaryFull : styles.btnOutlineFull} style={{ display: 'block', textAlign: 'center', textDecoration: 'none' }}>
+                             {plan.buttonText}
+                         </Link>
+                    )
+                ) : (
+                    <button className={plan.popular ? styles.btnPrimaryFull : styles.btnOutlineFull}>
+                        {plan.buttonText}
+                    </button>
+                )}
                 </div>
             ))}
             </div>
 
             {/* CTA Section */}
-            <div className={styles.ctaCard}>
-            <h2 style={{ fontSize: '2rem', marginBottom: '16px' }}>Still not sure? Try our demo!</h2>
-            <p style={{ color: '#fee2e2' }}>Test all features before committing</p>
-            <Link to="/admin/create-event?mode=demo" className={styles.ctaButton}>Try Demo Now</Link>
-            </div>
+            {!user && (
+                <div className={styles.ctaCard}>
+                <h2 style={{ fontSize: '2rem', marginBottom: '16px' }}>Still not sure? Try our demo!</h2>
+                <p style={{ color: '#fee2e2' }}>Test all features before committing</p>
+                <Link to="/admin/create-event?mode=demo" className={styles.ctaButton}>Try Demo Now</Link>
+                </div>
+            )}
 
         </div>
         </div>

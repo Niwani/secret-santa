@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { auth, db } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
+import { sendNotification } from "../utils/notificationUtils";
 
 import Modal from "../components/Modal";
 import TermsContent from "../components/TermsContent";
@@ -66,6 +67,14 @@ export default function SignupPage() {
         plan: "free",
         subscriptionExpiresAt: null,
       });
+
+      // Send Welcome Notification
+      await sendNotification(
+          user.uid,
+          "Welcome to Gifterly! 🎉",
+          "We're thrilled to have you! Start by creating your first Secret Santa event.",
+          "success"
+      );
 
       navigate("/dashboard");
     } catch (error) {

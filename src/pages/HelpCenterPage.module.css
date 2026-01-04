@@ -1,0 +1,198 @@
+.pageWrapper {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fdf2f8 0%, #fff1f2 100%);
+    padding-bottom: 60px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* HEADER */
+.header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1f2937;
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    color: #6b7280;
+    font-size: 1.1rem;
+    max-width: 500px;
+    margin: 0 auto 30px auto;
+}
+
+.searchBox {
+    background: white;
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 50px;
+    padding: 5px 5px 5px 25px;
+    /* Tighter padding for nested button */
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* Use gap for spacing */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s;
+}
+
+.searchBox:focus-within {
+    box-shadow: 0 15px 30px rgba(219, 39, 119, 0.15);
+    border-color: #fbcfe8;
+}
+
+.searchInput {
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    flex: 1;
+    /* Take remaining space */
+    margin: 0;
+    padding: 0;
+    color: #374151;
+    background: transparent;
+    height: 100%;
+    /* Ensure full height usage if possible */
+}
+
+.searchBtn {
+    background: #db2777;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 40px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 0.95rem;
+}
+
+.searchBtn:hover {
+    background: #be185d;
+}
+
+/* FAQ SECTION */
+.sectionTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.faqGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.faqItem {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #f3f4f6;
+    overflow: hidden;
+    transition: all 0.2s;
+}
+
+.faqItem.active {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border-color: #fbcfe8;
+}
+
+.faqQuestion {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    color: #374151;
+    font-size: 1.05rem;
+}
+
+.faqQuestion:hover {
+    background-color: #fdf2f8;
+    color: #db2777;
+}
+
+.faqAnswer {
+    padding: 0 20px 20px 20px;
+    color: #6b7280;
+    line-height: 1.6;
+    animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* CONTACT CARD */
+.contactCard {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    border-radius: 20px;
+    padding: 40px;
+    margin-top: 60px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.contactTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.contactText {
+    color: #9ca3af;
+    margin-bottom: 25px;
+}
+
+.contactBtn {
+    background: #db2777;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 1rem;
+}
+
+.contactBtn:hover {
+    background: #be185d;
+}

@@ -1,0 +1,16 @@
+{
+    "rules": {
+        "secretSanta": {
+            "users": {
+                "$uid": {
+                    ".read": "auth != null && auth.uid === $uid",
+                    ".write": "auth != null && auth.uid === $uid"
+                }
+            }
+        },
+        "support_chats": {
+            ".read": "auth != null",
+            ".write": "auth != null"
+        }
+    }
+}

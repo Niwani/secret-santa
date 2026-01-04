@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="footer-section">
           <div className="footer-logo">
             <Gift size={30} color="#e91e63" strokeWidth={2.5} style={{ marginTop: 2, display: "block" }} />
-            <h3>GiftEx</h3>
+            <h3>Gifterly</h3>
           </div>
           <p>Making gift-giving joyful agiain for 
           families, friends, and companies worldwide.</p>
@@ -27,14 +27,14 @@ export default function Footer() {
         <div className="footer-section">
           <h4>Resources</h4>
           <ul>
-            <li><a href="/pricing">Blog</a></li>
-            <li><Link to="/terms">Terms & Condition</Link></li>
+            <li><Link to="/resources">Resources Hub</Link></li>
+            <li><Link to="/blog">Blog</Link></li>
           </ul>
         </div>
 
         <div className="footer-section">
           <h4>Contact</h4>
-          <p>Email: support@giftex.com</p>
+          <p>Email: support@gifterly.com</p>
           <p>Phone: +234 813 000 0000</p>
         </div>
 
@@ -50,7 +50,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        © {new Date().getFullYear()} GiftEx — All Rights Reserved.
+        © {new Date().getFullYear()} Gifterly — All Rights Reserved.
       </div>
     </footer>
   );

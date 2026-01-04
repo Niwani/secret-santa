@@ -486,3 +486,11 @@
     transform: translateY(0);
   }
 }
+.lockedBtn {
+    filter: grayscale(100%);
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: #e5e7eb !important; /* Force gray background */
+    color: #6b7280 !important;
+    position: relative;
+}
