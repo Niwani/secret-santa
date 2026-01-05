@@ -31,7 +31,6 @@ export default function MyEvents({ subscriptionLevel = "free", setShowPricing })
             typeof p === "string" ? { name: p, email: "" } : { name: p.name, email: p.email || "" }
         );
         setEditingParticipants(normalized);
-        setEditingParticipants(normalized);
         setEditingTitle(selectedEvent.name || selectedEvent.eventName || "");
         setEditingMessage(selectedEvent.customMessage || `You've been invited to participate in the ${selectedEvent.name || selectedEvent.eventName} Secret Santa draw! Click here to pick your person:`);
         setEditingWishlistMessage(selectedEvent.customWishlistMessage || "Just a heads up! Your match has updated their Secret Santa wishlist. Check it out now!");
@@ -85,12 +84,10 @@ export default function MyEvents({ subscriptionLevel = "free", setShowPricing })
               ...selectedEvent, 
               name: editingTitle,
               participants: cleanParticipants,
-              participants: cleanParticipants,
               customMessage: (subscriptionLevel !== "free") ? editingMessage : undefined,
               customWishlistMessage: (subscriptionLevel !== "free") ? editingWishlistMessage : undefined
           };
           setSelectedEvent(updatedEvent);
-          setIsEditing(false);
           setIsEditing(false);
           setNotification({ title: "Success", message: "Your changes have been saved successfully.", type: "success" });
       } catch (err) {
@@ -119,8 +116,6 @@ export default function MyEvents({ subscriptionLevel = "free", setShowPricing })
     } else {
         // Fallback
         navigator.clipboard.writeText(`${msg} ${shareUrl}`);
-        // Fallback
-        navigator.clipboard.writeText(`${msg} ${shareUrl}`);
         setNotification({ title: "Link Copied!", message: "The event link has been copied to your clipboard.", type: "success" });
     }
   };
@@ -135,10 +130,8 @@ export default function MyEvents({ subscriptionLevel = "free", setShowPricing })
         .map(p => p.email);
 
     if (recipients.length === 0) {
-    if (recipients.length === 0) {
         setNotification({ title: "No Emails Found", message: "No participants have emails listed! Edit the event to add emails.", type: "error" });
         return;
-    }
     }
 
     const msg = event.customMessage || `Hi! You're invited to the Secret Santa Draw. Please click here to enter your Wishlist and find your match:`;
@@ -155,10 +148,8 @@ export default function MyEvents({ subscriptionLevel = "free", setShowPricing })
     if (!event || !event.participants) return;
 
     if (subscriptionLevel === "free") {
-    if (subscriptionLevel === "free") {
         setNotification({ title: "Pro Feature Locked", message: "📊 Exporting data is a Pro feature! Upgrade for CSV exports.", type: "error" });
         return;
-    }
     }
 
     const headers = ["Name", "Email"];
