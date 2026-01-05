@@ -207,4 +207,19 @@
     .heroTitle {
         font-size: 2.5rem;
     }
+
+    .heroSubtitle {
+        font-size: 1.1rem;
+        padding: 0 10px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        /* Single column on mobile */
+        gap: 30px;
+    }
+
+    .hero {
+        padding: 60px 20px 40px;
+    }
 }

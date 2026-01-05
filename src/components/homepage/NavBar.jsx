@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { Gift } from "lucide-react";
+import { Gift, Menu } from "lucide-react";
 import classes from "./NavBar.module.css";
 
 export default function NavBar() {
@@ -36,9 +36,7 @@ export default function NavBar() {
 
         {/* Hamburger Icon */}
         <div className={classes.hamburger} onClick={() => setOpen(!open)}>
-          <div className={classes.bar}></div>
-          <div className={classes.bar}></div>
-          <div className={classes.bar}></div>
+          <Menu size={32} color="#000000" strokeWidth={2.5} />
         </div>
       </nav>
 
@@ -46,16 +44,33 @@ export default function NavBar() {
 
 
       {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay */}
       {open && (
         <div className={classes.mobileOverlay} onClick={handleClose}>
           <div
             className={classes.mobileMenu}
             onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
           >
+             {/* Close Button */}
+             <button 
+                onClick={handleClose}
+                style={{
+                    position: "absolute",
+                    top: "20px",
+                    right: "20px",
+                    background: "none",
+                    border: "none",
+                    fontSize: "32px",
+                    color: "#374151",
+                    cursor: "pointer"
+                }}
+             >
+                &times;
+             </button>
+
             <Link to="/" className={classes.mobileLink} onClick={handleClose}>Home</Link>
-            <Link to="/blog" className={classes.mobileLink} onClick={handleClose}>Blog</Link>
             <Link to="/pricing" className={classes.mobileLink} onClick={handleClose}>Pricing</Link>
-            <Link to="/about" className={classes.mobileLink} onClick={handleClose}>About</Link>
+            <Link to="/blog" className={classes.mobileLink} onClick={handleClose}>Blog</Link>
             <Link to="/login" className={classes.mobileLink} onClick={handleClose}>Log in</Link>
             <button
               className={`${classes.ctaButton} ${classes.mobileCta}`}
