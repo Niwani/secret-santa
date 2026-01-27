@@ -1,16 +1,47 @@
-# React + Vite
+# 🎁 Secret Santa Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fun and interactive **Secret Santa generator** built with React and Vite.  
+This app allows users to add participants and generate Secret Santa pairings so everyone gets a surprise assignment for gifting.  
 
-Currently, two official plugins are available:
+🔗 **Live Demo:** https://niwani.github.io/secret-santa/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🧠 Project Overview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Secret Santa is a seasonal gift exchange tradition where each participant is randomly assigned another person to give a gift — without anyone knowing who gets whom.
 
-## Expanding the ESLint configuration
+This web app provides a frontend UI that:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Allows users to add a list of names
+- Generates Secret Santa assignments randomly
+- Ensures no one is assigned to themselves (basic pairing logic)
+- Displays the generated pairings clearly
+
+It’s a simple but interactive React project that demonstrates frontend logic, state management, and user interaction.
+
+---
+
+## 🚀 Features
+
+✔ Add participant names  
+✔ Generate random Secret Santa pairings  
+✔ Clear UI interactions  
+✔ Simple form and list management  
+✔ Built and deployed using Vite + GitHub Pages
+
+---
+
+## 🛠 Technologies Used
+
+This project is built with:
+
+- **React.js** — UI and component logic  
+- **Vite** — fast frontend development and build tool  
+- **JavaScript (ES6+)** — dynamic behavior  
+- **CSS** — styling and layout  
+- **GitHub Pages** — live deployment
+
+These technologies demonstrate modern frontend development skills and deployment workflow.
+
+---
